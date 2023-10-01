@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <div class="mt-3 mb-3" style="text-align: center">
+    <img
+      src="https://codingbirdsonline.com/wp-content/uploads/2020/01/cropped-coding-birds-online-favicon-180x180.png"
+      width="50"
+    />
+  </div>
+
+  <h5 class="card-title text-center m-2">CKEditor in Angular</h5>
+  <form class="example-form">
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input
+        type="text"
+        [formControl]="name"
+        matInput
+        placeholder="Ex. Rahul Singh"
+      />
+      <mat-error> Name is required </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input
+        type="email"
+        [formControl]="name"
+        matInput
+        placeholder="Ex. rahul.test@test.com"
+      />
+      <mat-error *ngIf="name.hasError('required')">
+        Email is required
+      </mat-error>
+    </mat-form-field>
+    <h4>Bio</h4>
+    <p>Bio CKEditor goes here</p>
+  </form>
+</div>
