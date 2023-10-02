@@ -7,30 +7,51 @@
   </div>
 
   <h5 class="card-title text-center m-2">CKEditor in Angular</h5>
-  <form class="example-form">
+  <form
+    [formGroup]="bioForm"
+    (ngSubmit)="submitForm()"
+    class="example-form"
+    novalidate
+  >
     <mat-form-field appearance="outline" class="example-full-width">
       <mat-label>Name</mat-label>
       <input
         type="text"
-        [formControl]="name"
+        formControlName="name"
         matInput
         placeholder="Ex. Rahul Singh"
       />
-      <mat-error> Name is required </mat-error>
+      <mat-error *ngIf="bioForm['controls']['name'].hasError('required')">
+        Name is required
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline" class="example-full-width">
       <mat-label>Email</mat-label>
       <input
         type="email"
-        [formControl]="name"
+        formControlName="email"
         matInput
         placeholder="Ex. rahul.test@test.com"
       />
-      <mat-error *ngIf="name.hasError('required')">
+      <mat-error *ngIf="bioForm['controls']['email'].hasError('required')">
         Email is required
       </mat-error>
     </mat-form-field>
     <h4>Bio</h4>
     <p>Bio CKEditor goes here</p>
+    <ckeditor
+      formControlName="bioContent"
+      [config]="{ placeholder: 'Type the your bio here' }"
+      [editor]="Editor"
+    ></ckeditor>
+    <mat-error
+      *ngIf="
+        bioForm['controls']['bioContent'].touched &&
+        bioForm['controls']['bioContent'].hasError('required')
+      "
+    >
+      Bio content is required
+    </mat-error>
+    <button class="btn btn-success mt-3">Submit</button>
   </form>
 </div>
