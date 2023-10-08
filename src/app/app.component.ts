@@ -9,21 +9,9 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 })
 export class AppComponent implements OnInit {
   title = 'CKEditor in Angular';
-  public bioForm!: FormGroup;
-  public Editor = ClassicEditor;
-  public defaultData = `<p>Hello, world!</p>`;
   constructor(private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {
-    this.bioForm = this.formBuilder.group({
-      name: [''],
-      email: [''],
-      bioContent: [''],
-    });
-  }
+  ngOnInit(): void {}
 
-  public submitForm() {
-    console.log(this.bioForm.value);
-    this.bioForm.reset();
-  }
+  public submitForm() {}
 }
