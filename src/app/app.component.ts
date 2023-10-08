@@ -13,17 +13,17 @@ export class AppComponent implements OnInit {
   public Editor = ClassicEditor;
   public defaultData = `<p>Hello, world!</p>`;
   constructor(private formBuilder: FormBuilder) {}
+
   ngOnInit(): void {
     this.bioForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', Validators.required],
-      bioContent: ['', Validators.required],
+      name: [''],
+      email: [''],
+      bioContent: [''],
     });
   }
 
   public submitForm() {
-    this.bioForm.markAllAsTouched();
     console.log(this.bioForm.value);
-    alert('Form submitted');
+    this.bioForm.reset();
   }
 }
